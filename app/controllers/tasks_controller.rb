@@ -47,13 +47,10 @@ class TasksController < ApplicationController
   
   private
   
-   def message_params
-     params.require(:message).permit(:content, :title)
-   end
    
-  # def task_params
-  #   params.require(:task).permit(:content, :status)
-  # end
+   def task_params
+     params.require(:task).permit(:content, :status)
+   end
    
    
 end
