@@ -1,8 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   
-  include SessionsHelpergit
-  
+  include SessionsHelper
+
   private
 
   def require_user_logged_in
