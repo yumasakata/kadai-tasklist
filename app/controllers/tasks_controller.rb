@@ -1,13 +1,13 @@
 class TasksController < ApplicationController
   before_action :require_user_logged_in
-  before_action :correct_user, only: [:destroy]
+  before_action :correct_user, only: [:show, :edit, :update, :destroy]
 
   def index
-      @tasks = Task.all
+      @tasks = current_user.tasks.all
   end
 
   def show
-      @task = Task.find(params[:id])
+     
   end
 
   def new
@@ -35,11 +35,11 @@ class TasksController < ApplicationController
   end
 
   def edit
-      @task = Task.find(params[:id])
+    
   end
   
   def update
-    @task = Task.find(params[:id])
+  
 
     if @task.update(task_params)
       flash[:success] = 'Task は正常に更新されました'
@@ -54,7 +54,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:content)
+    params.require(:task).permit(:content, :status)
   end
    def correct_user
     @task = current_user.tasks.find_by(id: params[:id])
